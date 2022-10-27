@@ -7,16 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class wantToReadActivity extends AppCompatActivity {
+public class FavoriteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_want_to_read);
+        setContentView(R.layout.activity_favorite);
 
         RecyclerView recyclerView = findViewById(R.id.bookRecView);
 
-        BooksRecViewAdapter adapter = new BooksRecViewAdapter(this, "wantToRead");
+        BooksRecViewAdapter adapter = new BooksRecViewAdapter(this, "favoriteBooks");
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

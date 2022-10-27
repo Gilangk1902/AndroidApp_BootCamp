@@ -46,11 +46,67 @@ public class BookActivity extends AppCompatActivity {
     }
 
     private void handleCurrentlyReadingBooks(Book book){
+        ArrayList<Book> currentlyReadingBooks = Utils.getInstance().getCurrentlyReadingBooks();
 
+        boolean existInCurrentlyReadingBooks = false;
+
+        for(Book b: currentlyReadingBooks){
+            if(b.getId() == book.getId()){
+                existInCurrentlyReadingBooks = true;
+            }
+        }
+
+        if(existInCurrentlyReadingBooks){
+            btnAddToCurrentlyReading.setEnabled(false);
+        }
+        else{
+            btnAddToCurrentlyReading.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(Utils.getInstance().addToCurrentlyReading(book)){
+                        Toast.makeText(BookActivity.this, "Book Added", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(BookActivity.this, CurrentlyReadingActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(BookActivity.this, "Something wrong happened, try again", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
-    private void handleFavoriteBooks(Book book){
+    private void handleFavoriteBooks(final Book book){
+        ArrayList<Book> favoriteBooks = Utils.getInstance().getFavoriteBooks();
 
+        boolean existInFavoriteBook = false;
+
+        for(Book b: favoriteBooks){
+            if(b.getId() == book.getId()){
+                existInFavoriteBook = true;
+            }
+        }
+
+        if(existInFavoriteBook){
+            btnAddToFavorite.setEnabled(false);
+        }
+        else{
+            btnAddToFavorite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(Utils.getInstance().addToFavorite(book)){
+                        Toast.makeText(BookActivity.this, "Book Added", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(BookActivity.this, FavoriteActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(BookActivity.this, "Something wrong happened, try again", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
     private void handleWantToReadBooks(final Book book){
@@ -74,7 +130,7 @@ public class BookActivity extends AppCompatActivity {
                     if(Utils.getInstance().addToWantToRead(book)){
                         Toast.makeText(BookActivity.this, "Book Added", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(BookActivity.this, AlreadyReadBookActivity.class);
+                        Intent intent = new Intent(BookActivity.this, wantToReadActivity.class);
                         startActivity(intent);
                     }
                     else{

@@ -15,29 +15,56 @@
         android:theme="@style/Theme.MyLibrary"
         tools:targetApi="31">
         <activity
-            android:name=".wantToReadActivity"
+            android:name=".websiteActivity"
             android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CurrentlyReadingActivity"
+            android:exported="false"
+            android:label="@string/activity_currently_reading">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".FavoriteActivity"
+            android:exported="false"
+            android:label="@string/activity_favorite_books">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".wantToReadActivity"
+            android:exported="false"
+            android:label="@string/activity_want_to_read">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".AlreadyReadBookActivity"
-            android:exported="false">
+            android:exported="false"
+            android:label="@string/activity_already_read">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".BookActivity"
-            android:exported="false">
+            android:exported="false"
+            android:label="@string/activity_book">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".AllBooksActivity"
-            android:exported="false">
+            android:exported="false"
+            android:label="@string/activity_all_books">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

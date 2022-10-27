@@ -2,6 +2,8 @@ package com.example.mylibrary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +37,57 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnWantToRead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, wantToReadActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, FavoriteActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnCurrentlyReading.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CurrentlyReadingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle(getString(R.string.app_name));
+                builder.setMessage("Designed and Developed with Love by Gilang"+"\n"+
+                        "Check my website for more awesome applications: ");
+                builder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.setPositiveButton("Visit: ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(MainActivity.this, websiteActivity.class);
+                        intent.putExtra("url", "hhtps://google.com/");
+                        startActivity(intent);
+
+                    }
+                });
+
+                builder.create().show();
+            }
+        });
+
         Utils.getInstance();
     }
 
@@ -42,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         btnAllbooks = findViewById(R.id.btnAllBooks);
         btnAlreadyRead = findViewById(R.id.btnAlreadyRead);
         btnWantToRead = findViewById(R.id.btnWantToRead);
-        btnCurrentlyReading = findViewById(R.id.btnWantToRead);
+        btnCurrentlyReading = findViewById(R.id.btnCurrentlyReading);
         btnFavorite = findViewById(R.id.btnFavorite);
         btnAbout = findViewById(R.id.btnAbout);
     }
